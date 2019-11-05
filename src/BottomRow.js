@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 
 const BottomRow = () => {
-  const [down, setDown] = useState(0);
+  const [value, setValue] = useState(1);
+  const [quarter, setQuarter] = useState(1);
+
   return (
     <div className="bottomRow">
       <div className="down">
         <h3 className="down__title">Down</h3>
-        <div className="down__value">{down}</div>
+        <div className="down__value">{value}</div>
       </div>
       <div className="toGo">
         <h3 className="toGo__title">To Go</h3>
@@ -19,12 +21,19 @@ const BottomRow = () => {
       </div>
       <div className="quarter">
         <h3 className="quarter__title">Quarter</h3>
-        <div className="quarter__value">4</div>
+        <div className="quarter__value">{quarter}</div>
       </div>
       <button
-        className="awayButtons__touchdown"
-        onClick={() => setDown(down + 1)}>
+        className="buttons"
+        onClick={() => setValue(value === 4 ? value * 0 + 1 : value + 1)}>
         Away Downs
+      </button>
+      <button
+        className="buttons"
+        onClick={() =>
+          setQuarter(quarter === 4 ? quarter * 0 + 1 : quarter + 1)
+        }>
+        Quarter
       </button>
     </div>
   );
